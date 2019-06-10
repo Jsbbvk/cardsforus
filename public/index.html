@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cards for Us</title>
+    <link rel="shortcut icon" type="image/png" href="../assets/img/icon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" href="../assets/css/animate.css">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+      <link rel="stylesheet" href="../assets/css/start.css">
+      <link rel="stylesheet" href="../assets/css/wait.css">
+
+
+  </head>
+  <body>
+
+    <div id="playerScreen" class="animated faster" style="display:none;">
+      <div id="questionCard">
+        <h3 id="questionText">TSA guidelines now prohibit _ on airplanes.</h3>
+      </div>
+      <div id="cardDisplay" class="my-5">
+        <h5 class="mb-4 text-center animated faster" id="cardczarDisplay"></h5>
+        <h6 class="mb-1 text-center animated faster" id="cardDisplayText">Your Cards</h6>
+        <div class="answerCards animated faster" id="answerC">
+        </div>
+        <div class="cardPile animated faster" id="cardP">
+        </div>
+      </div>
+
+      <div id="confirmCard" class="animated fast">
+        <h3 id="confirmText">Select Card</h3>
+      </div>
+      <div id="czarConfirmCard" class="animated fast">
+        <h3 id="czarConfirmText">Select Winner</h3>
+      </div>
+      <div id="readyForNextRound" class="animated fast">
+        <h3 id="readyForNextRoundText">Next Round?</h3>
+      </div>
+
+        <div id="menu">
+            <div id="toggleMenuButton">
+                <i class="fas fa-sort-down"></i>
+            </div>
+            <h3 class="text-center pt-3">Scoreboard</h3><br>
+            <div id="scoreboard" class="text-center pb-3">
+            </div>
+            <div class="row mt-2">
+                <div class="col-6" align="center">
+                    <button class="button-1" id="end-game-button">End Game</button>
+                </div>
+                <div class="col-6" align="center">
+                    <button class="button-1" id="leave-game-button">Leave Game</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <div id="start">
+        <div id="rules">
+            <i class="fas fa-question-circle"></i>
+        </div>
+        <div id="rule-display">
+            <div id="close-rule-display">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="text-center mt-4">Rules</h2>
+            <div id="rule-traditional" class="mt-3">
+                <h6>
+                    To start the game, each player has ten White Cards. <br><br>
+                    One person is selected as the Card Czar. A Question Card is played and everyone else answers the question
+                    or filling in the blank by selecting one White Card.
+                    <br><br>The Card Czar chooses the funniest card and whoever submitted it gets one point.
+                    <br><br>After the round, the winner becomes the next Card Czar and everyone draws up to ten White Cards.
+                </h6>
+            </div>
+        </div>
+        <h3 id="start-title" class="mt-5">Cards For Us</i>
+            <br>By Jacob Zhang<br><h6 class="text-center mt-4">when you can't afford to buy the actual game<br>¯\_(ツ)_/¯</h6></h3>
+        <div id="start-buttons" class="mt-5 row">
+            <div class="col-md-6 col-sm-12">
+                <button id="start-create" class="start-button">New Game</button>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                <button id="start-join" class="start-button">Join Game</button>
+            </div>
+        </div>
+        <div id="start-join-display" class="" style="margin-top: 4rem;">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" aria-label="Large" id="start-join-roomid"
+                       aria-describedby="inputGroup-sizing-sm" placeholder="Room ID" maxlength="4">
+            </div>
+            <div class="input-group mt-4">
+                <input type="text" class="form-control"  aria-describedby="inputGroup-sizing-default"
+                       placeholder="Name" maxlength="15" id="start-join-name">
+            </div>
+            <h5 id="start-join-error" class="mt-3">
+
+            </h5>
+            <div id="start-join-button" class="row mt-5">
+                <div class="col-6">
+                    <button class="button-1" id="start-join-game-button">
+                        Join
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button class="button-1 start-back-button">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="start-create-display" class="" style="margin-top: 4rem;">
+            <div class="input-group input-group-lg">
+                <input type="text" class="form-control" aria-label="Large" id="start-create-roomid"
+                       aria-describedby="inputGroup-sizing-sm" placeholder="Create Room ID" maxlength="4">
+            </div>
+            <div class="input-group mt-4">
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+                       placeholder="Name" maxlength="15" id="start-create-name">
+            </div>
+            <h5 id="start-create-error" class="mt-3">
+
+            </h5>
+            <div id="start-create-button" class="row mt-5">
+                <div class="col-6">
+                    <button class="button-1" id="start-create-game-button">
+                        Create
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button class="button-1 start-back-button">
+                        Back
+                    </button>
+                </div>
+            </div>
+        </div>
+        <h6 id="link-to-repo">
+            <a href="https://github.com/Jsbbvk/cardsforus" target="_blank">
+                Link to Github</a>
+        </h6>
+        <p id="disclaimer"><a href="https://cardsagainsthumanity.com/" target="_blank">Cards Against Humanity</a>
+            is a party game and published by Cards Against Humanity.<br>
+            This is an unofficial fan project designed to complement
+            the physical game, <br>and is not endorsed in any way by the publisher.
+        </p>
+    </div>
+
+    <div id="waiting-room" class="my-5">
+        <div id="waiting-rules">
+            <i class="fas fa-question-circle"></i>
+        </div>
+        <div id="waiting-rule-display">
+            <div id="waiting-close-rule-display">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="text-center mt-4">Rules</h2>
+            <div id="waiting-rule-traditional" class="mt-3">
+                <h6>
+                    To start the game, each player has ten White Cards. <br><br>
+                    One person is selected as the Card Czar. A Question Card is played and everyone else answers the question
+                    or filling in the blank by selecting one White Card.
+                    <br><br>The Card Czar chooses the funniest card and whoever submitted it gets one point.
+                    <br><br>After the round, the winner becomes the next Card Czar and everyone draws up to ten White Cards.
+                </h6>
+            </div>
+        </div>
+        <div id="waiting-options">
+            <div id="waiting-options-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <h2 class="text-center mt-3">Game Options</h2>
+            <div class="input-group mt-4">
+                <div class="input-group-prepend">
+                    <label class="input-group-text" for="option-pack">Pack</label>
+                </div>
+                <select class="custom-select" id="option-pack">
+                    <option selected value="traditional">Traditional</option>
+                    <option  value="traditional-sfs">Traditional (Safe For School)</option>
+                </select>
+            </div>
+            <button class="button-1" id="option-save-button">Save</button>
+            <br>
+            <button class="button-1" id="option-cancel-button">Cancel</button>
+        </div>
+        <div id="change-name">
+            <h2 class="text-center mt-3">Change Name</h2>
+            <div id="change-name-close">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="input-group mt-4">
+                <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+                       placeholder="Name" maxlength="15" id="change-name-name">
+            </div>
+            <button class="button-1" id="change-name-save-button">Save</button>
+            <br>
+            <button class="button-1" id="change-name-cancel-button">Cancel</button>
+        </div>
+        <div id="waiting-display">
+            <h1>Players</h1>
+            <h5>Room ID:
+                <b><span id="wait-roomCode"></span></b>
+            </h5>
+            <h5 class="text-center" id="waiting-setting"><i class="fas fa-cog"></i></h5>
+            <ol class="row mt-3" id="waiting-player-list">
+            </ol>
+            <div id="waiting-buttons" class="row mt-5">
+                <div class="col-6">
+                    <button class="button-1" id="startButton">
+                        Start
+                    </button>
+                </div>
+                <div class="col-6">
+                    <button class="button-1" id="leaveButton">
+                        Leave
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="playerLeaveNotification" style="display:none; width: 90vw; text-align: center; position: absolute; left: 50%; top: 30%; transform: translate(-50%, -50%);">
+        <h1>Player Left<br><br><br>Resetting Game</h1>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <script src="../socket.io/socket.io.js"></script>
+    <script>
+      var socket = io();
+    </script>
+
+    <script src="../assets/js/cards.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script src="../assets/js/start.js"></script>
+
+  </body>
+</html>

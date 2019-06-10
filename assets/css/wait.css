@@ -1,0 +1,121 @@
+
+#waiting-room {
+    display:none;
+}
+
+#waiting-options, #change-name {
+    position:absolute;
+    z-index: 1;
+    width: 80%;
+    height: 85%;
+    background-color: #f7f7f7;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #e5cbb7;
+    border-radius: 5px;
+    display:none;
+}
+
+#option-save-button, #option-cancel-button, #change-name-save-button, #change-name-cancel-button {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    margin-top: 25px;
+    border-radius: 5px;
+}
+
+#waiting-setting:hover, #change-name-close:hover, #waiting-options-close:hover {
+    color:gray;
+    cursor: pointer;
+}
+
+#waiting-options-close, #change-name-close {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+}
+
+
+#waiting-display {
+
+    text-align: center;
+}
+
+#waiting-buttons {
+    width: 70vw;
+    max-width: 750px;
+    margin: 0 auto;
+}
+
+
+#waiting-player-list {
+    counter-reset: liC;
+    margin: 0 auto;
+    padding: 0;
+    width: 60vw;
+    transform: translateX(-10px);
+}
+
+#waiting-player-list li {
+    list-style-type: none;
+    margin: 0 0 6px 2em;
+    padding: 4px 8px;
+    position: relative;
+    width: 100%;
+}
+
+#waiting-player-list li:before {
+    counter-increment: liC;
+    content: counter(liC)".";
+    position: absolute;
+    margin-right: 8px;
+    width: 2em;
+    left: -2em;
+    padding: 5px 4px 3px 4px;
+    top: 0;
+}
+
+.waiting-player:before {
+    background-color: #f9f9f9;
+}
+.waiting-player {
+    background-color: #f9f9f9;
+    text-align:left;
+}
+
+.editName {
+    float: right;
+    z-index: 1;
+}
+
+.editName:hover {
+    cursor: pointer;
+}
+
+#leaveButton, #startButton {
+    width: 100%;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+@media only screen and (min-width: 600px) {
+    #waiting-player-list {
+        width: 500px;
+    }
+
+    #leaveButton, #startButton {
+        width: 200px;
+        font-size: 20px;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+
+    #waiting-options, #change-name {
+        padding: 20px 100px;
+        width:500px;
+    }
+}

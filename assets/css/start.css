@@ -1,0 +1,194 @@
+
+
+#rules, #waiting-rules {
+    font-size: 25px;
+    position: absolute;
+    top: 2%;
+    left: 5%;
+}
+#rules:hover, #waiting-rules:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+#rule-display, #waiting-rule-display {
+    position:absolute;
+    z-index: 1;
+    width: 80%;
+    height: 85%;
+    background-color: #f7f7f7;
+    padding: 20px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #e5cbb7;
+    border-radius: 5px;
+    display:none;
+}
+
+#close-rule-display, #waiting-close-rule-display {
+    position: absolute;
+    top: 1%;
+    right: 5%;
+}
+
+#close-rule-display:hover, #waiting-close-rule-display:hover {
+    color: gray;
+    cursor: pointer;
+}
+
+#rule-traditional, #waiting-rule-traditional {
+    width: 100%;
+}
+
+#rule-leader {
+    width: 100%;
+    display:none;
+}
+
+#rule-leader-R{
+    height: 250px;
+    overflow:auto;
+}
+
+#disclaimer {
+    font-size: 10px;
+    width:100%;
+    padding: 5px;
+    position: absolute;
+    bottom: 1%;
+    left: 50%;
+    text-align: center;
+    transform: translateX(-50%);
+}
+
+#link-to-repo {
+    position: absolute;
+    font-size: 15px;
+    bottom: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#start-create-error, #start-join-error {
+    text-align: center;
+    color: red;
+}
+
+#start-title {
+    position: static;
+    font-size: 20px;
+    text-align: center;
+    z-index: 2;
+
+    line-height: 30px;
+}
+
+#start-join-display, #start-create-display {
+    position: static;
+    margin: 0 auto;
+
+    width: 75vw;
+    display:none;
+}
+
+.form-control {
+    border: 1px solid #e5cbb7;
+}
+
+#start-join-game-button, .start-back-button, #start-create-game-button {
+    font-size: 20px;
+    padding: 10px 25px;
+    border-radius: 5px;
+}
+
+#start-join-button, #start-create-button {
+    position: relative;
+    margin: 0;
+    width: 100% !important;
+}
+
+
+
+#start-buttons {
+    width: 100vw;
+    margin: 0;
+}
+#start-buttons > div {
+    height: 120px;
+}
+
+.start-button {
+    background-color: white;
+    border: 2px solid #e5cbb7;
+    padding: 20px 35px;
+    margin: 0 auto;
+    font-size: 20px;
+    display: block;
+    width: 200px;
+
+}
+.start-button:hover {
+    border: 2px solid gray;
+    cursor: pointer;
+}
+.start-button:focus{outline:none;}
+
+
+@media only screen and (min-width: 600px) {
+
+    #start-join-display, #start-create-display {
+        width: 300px;
+
+    }
+
+    .start-button {
+        padding: 20px 35px;
+        border: 3px solid #e5cbb7;
+        font-size: 20px;
+        margin: 0 auto;
+        width: 200px;
+    }
+    .start-button:hover {
+        border: 3px solid gray;
+    }
+
+    #start-buttons {
+        width: 70vw;
+        max-width: 700px;
+        margin: 9rem auto 0 auto !important;
+    }
+
+    #disclaimer {
+        font-size: 12px;
+    }
+
+    #rule-display, #waiting-rule-display {
+        padding: 20px 100px;
+        width:500px;
+    }
+
+    #rule-leader-R, #waiting-rule-leader-R {
+        height: 45vh;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #888;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555;
+    }
+
+}
+
+
+

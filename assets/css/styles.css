@@ -1,0 +1,217 @@
+* {
+  font-family: "Raleway", sans-serif;
+}
+
+body {
+  overflow-x: hidden;
+  transition: background-color 500ms ease-in-out, color 500ms ease-in-out;
+}
+
+#playerScreen {
+  width: 100%;
+  margin-top: 5rem;
+  padding: 20px 10px;
+  overflow-x:hidden;
+}
+
+#confirmText, #czarConfirmText, #readyForNextRoundText {
+  font-size: 18px;
+  text-align: center;
+}
+
+#confirmCard, #czarConfirmCard, #readyForNextRound {
+  background-color:white;
+  color:black;
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  width: 90%;
+  margin-bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid black;
+  padding: 5px 10px;
+  user-select: none;
+  text-align:center;
+  display:none;
+}
+
+#confirmCard:hover, #czarConfirmCard:hover, #readyForNextRound:hover {
+  cursor: pointer;
+}
+
+#czarConfirmCard {
+  display:none;
+}
+
+#readyForNextRound {
+  background-color:#99f473;
+  display:none;
+}
+
+.answerCards, .cardPile {
+  height: 60vh;
+  overflow-y: auto;
+  overflow-x:hidden;
+}
+
+.cardPile {
+  display: none;
+}
+
+#questionCard {
+  padding: 0 20px;
+  display:none;
+}
+
+.aCard,.wCard {
+  border: 1px solid #e5cbb7;
+  padding: 10px 15px;
+  margin: 1.7rem 0;
+}
+
+.wCard-name {
+  font-size: 1.2em;
+  background-color: #d5a47e;
+  padding: 5px;
+}
+
+.aCard.aCardHover {
+  border: 1px solid black;
+}
+
+.wCard.aCardHover {
+  border: 1px solid #c1ffb7;
+}
+
+.aCard:hover, .wCard:hover {
+  cursor: pointer;
+}
+
+#questionText {
+  font-size: 20px;
+  line-height:25px;
+}
+
+#cardDisplay {
+  position: relative;
+}
+
+#cardczarDisplay {
+  display:none;
+  width: 250px;
+  padding: 3px;
+  margin: 0 auto;
+}
+
+#cardDisplayText {
+  display:none;
+}
+
+#menu {
+  position: absolute;
+  width: 80%;
+  height: 80vh;
+  border: 1px solid black;
+  top: 0%;
+  left: 50%;
+  transform: translate(-50%, -100%);
+  z-index:1;
+  display:none;
+}
+
+#menu.mSlideDown {
+  animation: mslideDown 500ms forwards linear;
+}
+
+#menu.mSlideUp {
+  animation: mslideUp 500ms forwards linear;
+}
+
+@keyframes mslideUp {
+  0% {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  100% {
+    top: 0%;
+    transform: translate(-50%, -100%);
+  }
+}
+@keyframes mslideDown {
+  0% {
+    top: 0%;
+      transform: translate(-50%, -100%);
+  }
+  100% {
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+#scoreboard {
+  height: 70%;
+  overflow-x:hidden;
+  overflow-y: auto;
+}
+
+
+.button-1 {
+  background-color: white;
+  border: 2px solid #e5cbb7;
+  padding: 5px 7px;
+}
+
+.button-1:hover {
+  border: 2px solid gray;
+  cursor: pointer;
+}
+.button-1:focus{outline:none;}
+
+#toggleMenuButton {
+  position: absolute;
+  font-size: 3rem;
+  left: 50%;
+  top: 100%;
+  transform: translate(-50%, -30%);
+}
+
+#toggleMenuButton:hover {
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+
+  #menu {
+    max-width: 500px;
+  }
+
+  #playerScreen {
+    padding: 20px 13rem;
+  }
+
+  #confirmCard, #czarConfirmCard, #readyForNextRound {
+    width: 30%;
+    max-width: 250px;
+  }
+
+  .answerCards {
+    height: auto;
+  }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
