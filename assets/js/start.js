@@ -227,7 +227,7 @@ $("#start-join").click(joinGameDisplay);
 $("#start-create").click(createGameDisplay);
 $(".start-back-button").click(backToStart);
 
-var pack = "";
+var pack = "traditional";
 
 function joinGame() {
     $("#start-join-game-button").off('click');

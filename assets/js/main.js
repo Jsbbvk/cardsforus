@@ -78,6 +78,7 @@ function leave(e) {
 }
 
 function initPlayer() {
+    initCID();
 
     socket.emit('get players', roomID, function(pl) {
         numP = pl.length;
