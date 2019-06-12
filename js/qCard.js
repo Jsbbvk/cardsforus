@@ -1,5 +1,8 @@
 
 var qcardDeck = [
+	"Fortnite bad. _ good.",
+	"No, you're _!",
+	"Hey r/all! Check out _!",
 	"Why I can't sleep at night.",
 	"What's that smell.",
 	"I got 99 problems but _ ain't one.",
@@ -37,6 +40,9 @@ var qcardDeck = [
 ];
 
 var qcardDeckSFS = [
+	"Fortnite bad. _ good.",
+	"No, you're _!",
+	"Hey r/all! Check out _!",
 	"Why I can't sleep at night.",
 	"What's that smell.",
 	"I got 99 problems but _ ain't one.",

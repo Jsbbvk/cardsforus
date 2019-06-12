@@ -64,8 +64,7 @@
 
 #link-to-repo {
     position: absolute;
-    font-size: 15px;
-    bottom: 15%;
+    bottom: 20%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -189,6 +188,3 @@
     }
 
 }
-
-
-

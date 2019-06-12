@@ -27,7 +27,7 @@ var cardDeck = [
 	"Moist skin.",
 	"Voldemort.",
 	"Peppa the Pig.",
-	"Pikachu Meme.",
+	"Surprised Pikachu.",
 	"Shopping carts.",
 	"Buying a yacht in pennies.",
 	"Swatting my house.",
@@ -187,10 +187,12 @@ var cardDeck = [
 	"Panda sex.",
 	"Necrophilia.",
 	"A bleached asshole.",
-	"Muhammad (Praise Be Unto Him)."
+	"Muhammad (Praise Be Unto Him).",
+	"A Koreaboo"
 ];
 
 var cardDeckSFS = [
+	"A Koreaboo",
 	"Silent but deadly.",
 	"Ur MOM XD.",
 	"Wet underpants.",
@@ -216,7 +218,7 @@ var cardDeckSFS = [
 	"Moist skin.",
 	"Voldemort.",
 	"Peppa the Pig.",
-	"Pikachu Meme.",
+	"Surprised Pikachu.",
 	"Shopping carts.",
 	"Buying a yacht in pennies.",
 	"Swatting my house.",
