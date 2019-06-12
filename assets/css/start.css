@@ -62,9 +62,40 @@
     transform: translateX(-50%);
 }
 
+#prevScoreDisplay {
+  position: absolute;
+  width: 80%;
+  height: 80vh;
+  border: 1px solid black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:1;
+  display:none;
+  background-color:white;
+}
+
+#prevScoreB {
+  position: absolute;
+  display:none;
+  top: 2%;
+  right: 5%;
+   user-select: none; 
+}
+
+#prevScoreB:hover {
+  cursor: pointer;
+}
+
+#close-prevScore-display {
+  position : absolute;
+  top: 1%;
+  right: 5%;
+}
+
 #link-to-repo {
     position: absolute;
-    bottom: 20%;
+    bottom: 15%;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -135,6 +166,10 @@
 
 
 @media only screen and (min-width: 600px) {
+
+    #menu {
+      max-width: 500px;
+    }
 
     #start-join-display, #start-create-display {
         width: 300px;

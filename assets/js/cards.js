@@ -188,11 +188,13 @@ var cardDeck = [
 	"Necrophilia.",
 	"A bleached asshole.",
 	"Muhammad (Praise Be Unto Him).",
-	"A Koreaboo"
+	"A Koreaboo.",
+	"Me mum's car."
 ];
 
 var cardDeckSFS = [
-	"A Koreaboo",
+	"Me mum's car."
+	"A Koreaboo.",
 	"Silent but deadly.",
 	"Ur MOM XD.",
 	"Wet underpants.",

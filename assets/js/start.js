@@ -30,6 +30,7 @@ socket.on('display current view', function(gamestart) {
                     $('#playerLeaveNotification').fadeIn(2000, function() {
                         socket.emit('end game', roomID);
                     }).fadeOut(800, function() {
+                        displayPrevScore = true;
                         displayWaitingRoom();
                     });
                 });
@@ -49,6 +50,7 @@ socket.on('display current view', function(gamestart) {
             }
         });
     } else {
+        displayPrevScore = true;
         displayWaitingRoom();
     }
 });
@@ -162,6 +164,21 @@ $("#change-name-save-button").on('click', function (e) {
     socket.emit('change player name', roomID, nameID, n);
 });
 
+
+var prevScoredisplayed = false;
+$('#close-prevScore-display').on('click', function(e) {
+  e.preventDefault();
+  prevScoredisplayed = false;
+  $('#prevScoreDisplay').css('display', 'none');
+});
+
+$('#prevScoreB').on('click', function(e) {
+  e.preventDefault();
+  prevScoredisplayed = true;
+  $('#prevScoreDisplay').css('display', 'block');
+});
+
+
 document.getElementById("start-create-roomid").addEventListener('input', function (evt) {
     document.getElementById("start-create-error").innerText = "";
 
@@ -226,6 +243,9 @@ function backToStart() {
 $("#start-join").click(joinGameDisplay);
 $("#start-create").click(createGameDisplay);
 $(".start-back-button").click(backToStart);
+
+var prevScore = [];
+var displayPrevScore = false;
 
 var pack = "traditional";
 
@@ -333,6 +353,23 @@ function displayWaitingRoom(){
     document.getElementById("wait-roomCode").innerText = roomID;
     document.getElementById("waiting-player-list").innerHTML="";
 
+    if (displayPrevScore) {
+      socket.emit('get players', roomID, function(pl) {
+        $('#prevScoreB').css('display', 'block');
+        var s = "";
+        for (var p of pl) {
+          s += "<div class=\"row\">" +
+              "<div class=\"col-6\"><h5>"+p.name+ ((p.id==nameID)?" (You)":"")+
+              "</h5></div>" +
+              "<div class=\"col-6\" id='sb-"+p.id+"'><h5>"+p.points+"</h5></div>" +
+              "</div>";
+        }
+        document.getElementById("prevScoreDisplayP").innerHTML = s;
+      });
+    } else $('prevScoreB').css('display', 'none');
+
+
+
     socket.emit("get room pack", roomID, function(r) {
         document.getElementById("option-pack").value = r;
         pack = r;
@@ -436,6 +473,7 @@ socket.on('player leave', function(gamestart, id) {
                 socket.emit('end game', roomID);
             }).fadeOut(800, function() {
                 resetting = false;
+                displayPrevScore=true;
                 displayWaitingRoom();
             });
         });
@@ -464,6 +502,7 @@ function startGame(e) {
     }, 2000);
 
     socket.emit('start game', roomID);
+    prevScore = [];
 }
 
 function leaveGame(e) {

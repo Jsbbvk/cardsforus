@@ -102,7 +102,8 @@ function initPlayer() {
 
     socket.on('game ended', function() {
         backToWaitingRoom(function() {
-            displayWaitingRoom();
+          displayPrevScore = true;
+          displayWaitingRoom();
         });
     });
 }
@@ -158,7 +159,9 @@ function backToWaitingRoom(cb) {
 
 function nextRound() {
     document.getElementById("playerScreen").style.display = "block";
-    playerHand.push(getRandomCID());
+    while (playerHand.length < 9) {
+      playerHand.push(getRandomCID());
+    }
     socket.emit('get card czar', roomID, function(pp) {
         if(nameID==pp.id) {
             isCardCzar = true;
@@ -436,8 +439,7 @@ function displayWaitingCardsList(cb) {
                 a[j[aa]] = c;
                 aa++;
             }
-            console.log(a);
-            console.log(pl);
+
             for (var c of a) {
                 if (c.id != cc.id) {
                     var ca = getCardById(c.cid);

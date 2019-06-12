@@ -114,6 +114,9 @@ var rooms = {};
         rooms[roomid].startingGame = true;
         rooms[roomid].gamestate = CHOOSING_CARD;
         rooms[roomid].gamestart = true;
+        for (var i = 0; i < rooms[roomid].player.length; i++) {
+          rooms[roomid].player[i].points = 0;
+        }
         rooms[roomid].cardczar = parseInt(rooms[roomid].player.length * Math.random())+1;
         qCard.initQCard(rooms[roomid].cardpack);
         rooms[roomid].qcid = qCard.getRandomCID();
@@ -272,7 +275,6 @@ var rooms = {};
         rooms[roomid].gamestart = false;
         rooms[roomid].startingGame = false;
         for (var i = 0; i < rooms[roomid].player.length; i++) {
-            rooms[roomid].player[i].points = 0;
             rooms[roomid].player[i].cid = -1;
             rooms[roomid].player[i].isready = false;
             rooms[roomid].player[i].nextRound = false;
@@ -311,4 +313,3 @@ var rooms = {};
 http.listen(8000, function(){
     console.log('listening on *:8000');
 });
-
