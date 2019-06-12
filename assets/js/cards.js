@@ -193,7 +193,7 @@ var cardDeck = [
 ];
 
 var cardDeckSFS = [
-	"Me mum's car."
+	"Me mum's car.",
 	"A Koreaboo.",
 	"Silent but deadly.",
 	"Ur MOM XD.",
