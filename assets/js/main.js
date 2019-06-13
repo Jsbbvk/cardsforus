@@ -76,7 +76,7 @@ function leave(e) {
         location.reload();
     });
 }
-
+var tCards = 10;
 function initPlayer() {
     initCID();
 
@@ -90,7 +90,7 @@ function initPlayer() {
     document.getElementById("playerScreen").style.display = "block";
 
     playerHand = [];
-    for (var i = 0; i < 9; i++) playerHand.push(getRandomCID());
+    for (var i = 0; i < tCards; i++) playerHand.push(getRandomCID());
     socket.emit('get card czar', roomID, function(pp) {
         if(nameID==pp.id) {
             isCardCzar = true;
