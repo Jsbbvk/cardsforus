@@ -167,7 +167,7 @@
 
 @media only screen and (min-width: 600px) {
 
-    #menu {
+    #menu, #prevScoreDisplay {
       max-width: 500px;
     }
 
