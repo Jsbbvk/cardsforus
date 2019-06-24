@@ -60,9 +60,9 @@ socket.on('get room id', function(cb){
 });
 
 
-window.onbeforeunload = function() {
-    if (!isLeaving) socket.emit('delete player', roomID, nameID);
-};
+// window.onbeforeunload = function() {
+//     if (!isLeaving) socket.emit('delete player', roomID, nameID);
+// };
 window.onpagehide = function() {
     if (!isLeaving) socket.emit('delete player', roomID, nameID);
 };
