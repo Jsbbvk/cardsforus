@@ -66,7 +66,7 @@ var cardDeck = [
 	"Pretending to care.",
 	"An ugly face.",
 	"BATMAN!!!",
-	"Homeless people."
+	"Homeless people.",
 	"Racially-biased SAT questions.",
 	"Centaurs.",
 	"A salty surprise.",
@@ -553,7 +553,7 @@ var cardDeckSFS = [
 	"Pretending to care.",
 	"An ugly face.",
 	"BATMAN!!!",
-	"Homeless people."
+	"Homeless people.",
 	"Racially-biased SAT questions.",
 	"Centaurs.",
 	"A salty surprise.",
