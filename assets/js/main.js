@@ -205,6 +205,7 @@ function displayPlayerCards(cb) {
         $('#menu').css('border', '1px solid black');
         $('#menu').fadeIn(400);
         $('#menu').css('display', 'block');
+        $('#cardP').css('display', 'none');
     }
     gameState = CHOOSING_CARD;
     selectedCID = -1;
