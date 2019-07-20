@@ -162,6 +162,7 @@ function nextRound() {
     while (playerHand.length < 9) {
       playerHand.push(getRandomCID());
     }
+    selectedCID = -1;
     socket.emit('get card czar', roomID, function(pp) {
         if(nameID==pp.id) {
             isCardCzar = true;
@@ -291,6 +292,10 @@ function hidePlayerCards(cb) {
 }
 
 function displayWaitingCards(cb) {
+    if (!isCardCzar && selectedCID==-1) {
+      displayPlayerCards();
+      return;
+    }
     gameState = WAITING_ROOM;
     cardczarCID = -1;
     $("#cardP").css("display", "block");

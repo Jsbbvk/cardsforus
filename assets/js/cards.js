@@ -2,6 +2,10 @@
 
 
 var cardDeck = [
+	"UWU.",
+	"OWO.",
+	"Yes.",
+	"Obviously this card because it's the best.",
 	"Yeast.",
 	"Lunchables.",
 	"Licking things to claim them as your own.",
@@ -488,6 +492,10 @@ var cardDeck = [
 ];
 
 var cardDeckSFS = [
+	"UWU.",
+	"Obviously this card because it's the best.",
+	"OWO.",
+	"Yes.",
 	"Yeast.",
 	"Lunchables.",
 	"Licking things to claim them as your own.",
