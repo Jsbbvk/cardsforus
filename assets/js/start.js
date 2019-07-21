@@ -217,6 +217,9 @@ document.getElementById("start-join-name").addEventListener('input', function (e
 function joinGameDisplay() {
     $("#start-join-game-button").unbind().click(joinGame);
     rulesActive = false;
+    $('#link-to-repo').css('display','none');
+    $('#disclaimer').css('display','none');
+
     document.getElementById("rule-display").style.display = "none";
 
     document.getElementById("start-buttons").style.display = "none";
@@ -227,6 +230,8 @@ function createGameDisplay() {
     $("#start-create-game-button").unbind().click(createGame);
     rulesActive = false;
     document.getElementById("rule-display").style.display = "none";
+    $('#link-to-repo').css('display','none');
+    $('#disclaimer').css('display','none');
 
     document.getElementById("start-buttons").style.display = "none";
     document.getElementById("start-create-display").style.display = "block";
@@ -240,6 +245,9 @@ function backToStart() {
     document.getElementById("start-create-roomid").value = "";
     document.getElementById("start-create-name").value = "";
     document.getElementById("start-buttons").style.display = "flex";
+    $('#link-to-repo').css('display','block');
+    $('#disclaimer').css('display','block');
+
 }
 
 $("#start-join").click(joinGameDisplay);

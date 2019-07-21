@@ -2,6 +2,7 @@
 
 
 var cardDeck = [
+	"Raiding Area 51.",
 	"UWU.",
 	"OWO.",
 	"Yes.",
@@ -492,6 +493,7 @@ var cardDeck = [
 ];
 
 var cardDeckSFS = [
+	"Raiding Area 51.",
 	"UWU.",
 	"Obviously this card because it's the best.",
 	"OWO.",
@@ -872,6 +874,7 @@ var cardDeckSFS = [
 	"Asians who aren't good at math.",
 	"Fear itself."
 ];
+
 
 var cardCID;
 
