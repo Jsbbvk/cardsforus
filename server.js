@@ -81,7 +81,7 @@ var rooms = {};
          callback&&callback("started", 0);
          return;
      }
-     if (rooms[roomid].player.length > 10) {
+     if (rooms[roomid].player.length > 30) {
          callback&&callback("full", 0);
          return;
      }
