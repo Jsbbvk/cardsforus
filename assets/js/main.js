@@ -407,7 +407,7 @@ function displayWaitingCards(cb) {
 
             socket.on('card added', function(pl) {
                 jQuery('#wcN-'+pl.id).fadeOut(400, function() {
-                    $(this).text(getCardById(pl.cid));
+                    $(this).html(getCardById(pl.cid));
                     $(this).parent().attr('data-cid', pl.cid);
                 }).fadeIn(400, function() {
                 });
