@@ -190,7 +190,7 @@ function nextRound() {
 function displayQuestionCard(cb) {
     //assuming that questionCard is initially displayed as none
     socket.emit('get question card', roomID, function(q) {
-        $('#questionText').text(q);
+        $('#questionText').html(q);
         $('#questionCard').fadeIn(500, function() {
             $('#questionCard').css('display', 'block');
             cb&&cb();

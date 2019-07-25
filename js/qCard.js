@@ -227,6 +227,107 @@ var qcardDeckSFS = [
 	"War! What is it good for?"
 ];
 
+var qAsainDeck = [
+	"My parents stop me from _ with the opposite sex.",
+	"My white friends think that _ is sushi.",
+	"My brain can fit so many _ in it.",
+	"Cuffing season is overrated. All you need is _.",
+	"Me: I'm so single, Also me: *_*.",
+	"My parents encouraged _ in the household.",
+	"I get rid of my dignity before I try _.",
+	"When you recall the time you _, you're overwhelmed with joy.",
+	"Your parents love to talk about their riveting experience in _.",
+	"Cashier: Sorry, we ran out of boba. Friend: Just get _, it's the same anyways.",
+	"When my mum sees _, she thinks I should be like that.",
+	"You know you're at an Asian party when there is _.",
+	"_ is a simple trick I use to win arguments.",
+	"I'm not safe unless I carry _ in my wallet.",
+	"I only  use _ in my own country.",
+	"K-Dramas are just female _.",
+	"Bringing _ to your family gatherings is always a good idea.",
+	"The biggest challenge for asian immigrants is _.",
+  "Ever since the start of subtle asian dating, I have experienced difficulty in _.",
+	"In my family, we don't _ with each other.",
+	"_ helps to speak a foreign language better.",
+	"My going out makeup look is _.",
+	"My number one turn-on is _.",
+	"I refuse that _ is good for me.",
+	"Trying to find the perfect _ ratio is almost impossible.",
+	"According to a Japanese legend, you can't sleep at night because _ is haunting you.",
+	"_ is better than East Meets East and Tinder.",
+	"I would throw away my boba if there's _ in it.",
+	"Nothing makes my parents happier than _.",
+	"I was taught to run away from _.",
+	"My mum could spend hours in a local supermarket to fine the best _.",
+	"My biggest difficulty in dating is _.",
+	"My new year resolution is to _.",
+	"Shooting your shot on subtle asian dating by _.",
+	"A meal is not complete without _.",
+	"Hiding _ from your parents is quite difficult.",
+	"I would walk 5 blocks below zero degrees to get _.",
+	"Being a white washed asian means I like _.",
+	"My parents roast me for _.",
+	"I'm polite on the outside but _ on the inside.",
+	"I was told that _ could clear my acne.",
+	"I don't think my parents know that I like _.",
+	"\"_ would make you smarter.\" - my dad.",
+	"_ means she/he is 200% into me.",
+	"I'm studying _ so you know I'd be making that $$$ in the future.",
+	"Wholesome fuccbois: I'm here for a _ time, not a long time.",
+	"When I'm feeling down, I try _.",
+	"I'm attracted to fuckboys because _.",
+	"When you fail a test, you _.",
+	"I can survive on _ if I'm on a desert island.",
+	"The one class I'm failing in is _.",
+	"Whenever I visit my relatives, my parents would remind me to _.",
+	"A constructive advice to get my life together would be _.",
+	"I will work for _ for free.",
+	"See a therapist: $100/hour. _: free.",
+	"My white teacher thought me and my classmates are related because we have _.",
+	"Instead of asking the girl/guy out, I prefer _.",
+	"Me: I'm a bad bitch. Also me: *_*.",
+	"Mixing _ with vodka makes the best pregame.",
+	"Anxiety is just another term for _.",
+	"She's not angry. She just wants _.",
+	"I'm the only person in my friend group who is _.",
+	"If you don't send _ with flowers to ABGs, do you really have game?",
+	"When relatives ask why you're single, you defend yourself by _.",
+	"My dad thinks _ means I'm gay.",
+	"My parents think I'm studying when I'm actully _.",
+	"Doctor: Do you do extreme sports? Me: Yea, sometimes I _.",
+	"I will have you know that I graduated top of my class in _.",
+	"\"Remember to bring _ before you leave the house\" -my mum.",
+	"Unpopular opinion: _ will be dead pretty soon.",
+	"There are only three ways to motivate people: money, fear, and _.",
+	"When there is _, my mum thinks it's time to study.",
+	"Every asian kitchen has _.",
+	"I only date people who are _.",
+	"When my parents hear logical arguments, they think it's _.",
+	"My parents and I have _ in common.",
+	"_ in a 100% effective birth control.",
+	"Wholesome fuccbois only want _ and it's disgusting.",
+	"I broke up with an ABG by saying \"you can find someone else to buy you boba and _ from now on.\"",
+	"I use _ to hide all my life problems.",
+	"Guys who watch anime have the best _.",
+	"I could tell the difference between Chinese, Korean, and Japanese by the way they _.",
+	"I was shook when I found out my white friend eats _.",
+	"Sharing my _ experince on subtle asian pages is a new therapy.",
+	"I look too young to be _.",
+	"Rather than studying and saving my GPA, I prefer _.",
+	"\"You are a _ to the family.\" - every asian parent ever.",
+	"My grandparents think K-pop is really just _.",
+	"_ is not a personality trait.",
+	"At every family gathering, your relatives would talk about _.",
+	"I spend all my money on _ and complain about being broke.",
+	"You're not an ABG if you don't _.",
+	"My grandma is really traditional but she would still try _.",
+	"_ at 3am is very dangerous.",
+	"_ is a subtle asian student trait.",
+	"Sometimes I'm grateful for my _.",
+	"_ means I'm becoming a gangster, according to my mom.",
+	"My parents go crazy when they see _.",
+	"My mum thinks _ equals failure."
+];
 
 var qcardCID;
 var pack = "traditional";
@@ -236,6 +337,7 @@ module.exports = {
         if (cid < 0) return "";
         if (pack == "traditional") return qcardDeck[cid];
         else if (pack=="traditional-sfs") return qcardDeckSFS[cid];
+				else if (pack="asain") return qAsainDeck[cid];
     },
     initQCard: function(p) {
         pack = p;
@@ -248,6 +350,9 @@ module.exports = {
             case "traditional-sfs":
                 a = qcardDeckSFS.length;
                 break;
+						case "asain":
+								a = qAsainDeck.length;
+								break;
         }
 
         for (var i = 0; i < a; i++) {
