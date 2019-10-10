@@ -73,6 +73,7 @@ var rooms = {};
     });
 
     socket.on('join room', function(roomid, name, callback){
+      console.log(roomid);
      if (rooms[roomid]==null) {
          callback&&callback("null", 0);
          return;
@@ -138,10 +139,10 @@ var rooms = {};
      }
 
      for (var i = id; i < pl.length; i++) {
-         rooms[roomid].player[id-1].name = pl[i].name;
-         rooms[roomid].player[id-1].id = pl[i].id-1;
-         rooms[roomid].player[id-1].cid = pl[i].cid;
-         rooms[roomid].player[id-1].points = pl[i].points;
+         rooms[roomid].player[i-1].name = pl[i].name;
+         rooms[roomid].player[i-1].id = pl[i].id-1;
+         rooms[roomid].player[i-1].cid = pl[i].cid;
+         rooms[roomid].player[i-1].points = pl[i].points;
      }
      rooms[roomid].player.splice(pl.length-1, 1);
      io.to(roomid).emit('player leave', rooms[roomid].gamestart, id);
