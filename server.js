@@ -73,7 +73,6 @@ var rooms = {};
     });
 
     socket.on('join room', function(roomid, name, callback){
-      console.log(roomid);
      if (rooms[roomid]==null) {
          callback&&callback("null", 0);
          return;
@@ -210,6 +209,13 @@ var rooms = {};
         rooms[roomid].player[id-1].cid = cid;
         io.to(roomid).emit('card added', rooms[roomid].player[id-1]);
         cb&&cb();
+    });
+
+    socket.on('get white cards', function(roomid, cb) {
+        if (rooms[roomid]==null)return;
+
+        var c = qCard.getCardsFromPack("white", rooms[roomid].cardpack);
+        cb&&cb(c);
     });
 
     socket.on('set player ready', function(roomid, id) {

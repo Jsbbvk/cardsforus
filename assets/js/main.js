@@ -78,32 +78,32 @@ function leave(e) {
 }
 var tCards = 10;
 function initPlayer() {
-    initCID();
+    initCID(function() {
+        socket.emit('get players', roomID, function(pl) {
+            numP = pl.length;
+        });
 
-    socket.emit('get players', roomID, function(pl) {
-        numP = pl.length;
-    });
+        $("#end-game-button").unbind().on("click", endGame);
+        $("#leave-game-button").unbind().on('click', leave);
+        $("#menu").removeClass('mSlideDown mSlideUp');
+        document.getElementById("playerScreen").style.display = "block";
 
-    $("#end-game-button").unbind().on("click", endGame);
-    $("#leave-game-button").unbind().on('click', leave);
-    $("#menu").removeClass('mSlideDown mSlideUp');
-    document.getElementById("playerScreen").style.display = "block";
+        playerHand = [];
+        for (var i = 0; i < tCards; i++) playerHand.push(getRandomCID());
+        socket.emit('get card czar', roomID, function(pp) {
+            if(nameID==pp.id) {
+                isCardCzar = true;
+                displayQuestionCard(function(){displayWaitingCards();});
+            } else {
+                displayQuestionCard(function(){displayPlayerCards();});
+            }
+        });
 
-    playerHand = [];
-    for (var i = 0; i < tCards; i++) playerHand.push(getRandomCID());
-    socket.emit('get card czar', roomID, function(pp) {
-        if(nameID==pp.id) {
-            isCardCzar = true;
-            displayQuestionCard(function(){displayWaitingCards();});
-        } else {
-            displayQuestionCard(function(){displayPlayerCards();});
-        }
-    });
-
-    socket.on('game ended', function() {
-        backToWaitingRoom(function() {
-          displayPrevScore = true;
-          displayWaitingRoom();
+        socket.on('game ended', function() {
+            backToWaitingRoom(function() {
+                displayPrevScore = true;
+                displayWaitingRoom();
+            });
         });
     });
 }
