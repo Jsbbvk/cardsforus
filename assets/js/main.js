@@ -268,6 +268,7 @@ function displayPlayerCards(cb) {
                 co++
             }
             document.getElementById("answerC").innerHTML = s;
+
             if (isCardCzar) setSelectableCzarCards();
             else setSelectableCards();
             setSkippableCards();
@@ -441,29 +442,7 @@ function displayWaitingCards(cb) {
 
                 socket.on('card czar ready', function() {
                     $("#czarConfirmText").text("Select Winner");
-                    $(".wCard").unbind().on("click", function(e) {
-                        e.preventDefault();
-                        $('#czarConfirmCard').removeClass('fadeOut fadeIn');
-                        $("#czarConfirmText").text("Select Winner");
-                        if ($(this).attr("data-cid") != -1) {
-                            if (!$(this).hasClass("aCardHover")) {
-                                for (var c of $(".cardPile").children(".wCard")) {
-                                    $(c).removeClass("aCardHover");
-                                }
-                                $(this).addClass("aCardHover");
-                                cardczarCID = $(this).attr("data-cid");
-                                cardczarID = $(this).attr('data-id');
-                                $("#czarConfirmCard").css("background-color", "#bdffbd");
-                                $("#czarConfirmText").text("Confirm");
-                            } else {
-                                $(this).removeClass("aCardHover");
-                                $("#czarConfirmCard").css("background-color", "white");
-                                $("#czarConfirmText").text("Select Winner");
-                                cardczarCID = -1;
-                                cardczarID = 0;
-                            }
-                        }
-                    });
+                    setSelectableCzarCards();
                 });
             }
 
