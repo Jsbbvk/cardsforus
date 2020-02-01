@@ -50,7 +50,7 @@ body {
 }
 
 .answerCards, .cardPile {
-  height: 60vh;
+  height: 45vh;
   overflow-y: auto;
   overflow-x:hidden;
 }
