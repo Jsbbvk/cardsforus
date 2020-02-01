@@ -26,7 +26,7 @@ body {
   bottom: 0;
   z-index: 1;
   width: 90%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   border: 1px solid black;
@@ -67,7 +67,21 @@ body {
 .aCard,.wCard {
   border: 1px solid #e5cbb7;
   padding: 10px 15px;
-  margin: 1.7rem 0;
+  margin: 1rem 0;
+}
+.aCard {
+  display:inline-block;
+  width: 90%;
+}
+.skipCardButton {
+  display:inline-block;
+  margin-left:15px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.skipCardButton:hover {
+  cursor: pointer;
 }
 
 .wCard-name {
@@ -106,7 +120,7 @@ body {
   margin: 0 auto;
 }
 
-#cardDisplayText {
+#cardDisplayText, #skipDisplayText {
   display:none;
 }
 
@@ -195,6 +209,10 @@ body {
   #confirmCard, #czarConfirmCard, #readyForNextRound {
     width: 30%;
     max-width: 250px;
+  }
+
+  .aCard {
+    width: 95%;
   }
 
   .answerCards {

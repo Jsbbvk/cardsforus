@@ -198,6 +198,24 @@ function displayQuestionCard(cb) {
     });
 }
 
+function addPlayerCard() {
+
+    $('.aCard').each(function(i, c) {
+       c.classList.remove("animated");
+    });
+
+    var newCID =  getRandomCID();
+    playerHand.push(newCID);
+
+    var ca = getCardById(newCID);
+    document.getElementById("answerC").innerHTML +=
+        "<div style='position:relative' class='animated slideInRight'><div class=\"aCard\" data-cid='"+newCID+"'>" + ca+"</div>" +
+        "<i class=\"fas fa-times skipCardButton\"></i></div>";
+    setSkippableCards();
+    if (isCardCzar) setSelectableCzarCards();
+    else setSelectableCards();
+}
+
 function displayPlayerCards(cb) {
     if (!isCardCzar) {
         $('#cardczarDisplay').css('color', 'white');
@@ -222,6 +240,11 @@ function displayPlayerCards(cb) {
             $("#cardDisplayText").removeClass('fadeOut');
             $("#cardDisplayText").addClass('fadeIn');
 
+            $("#skipDisplayText").css("display", "block");
+            $("#skipDisplayText").text("Skips: " + numSkips);
+            $("#skipDisplayText").removeClass('fadeOut');
+            $("#skipDisplayText").addClass('fadeIn');
+
             $("#cardczarDisplay").css('display', 'block');
             $("#cardczarDisplay").text((cc.name)+" is the Card Czar");
             $("#cardczarDisplay").removeClass('fadeIn');
@@ -239,40 +262,47 @@ function displayPlayerCards(cb) {
             var co = 0;
             for (var c of playerHand) {
                 var ca = getCardById(c);
-                s += "<div class=\"aCard animated slideInRight\" data-cid='"+c+"' style='animation-delay:"+(co*50+50)+"ms'>" +
-                    ca+"</div>";
+                s += "<div style='position:relative; animation-delay:"+(co*50+50)+"ms' class='animated slideInRight'>" +
+                    "<div class=\"aCard\" data-cid='"+c+"'>" +
+                    ca+"</div><i class=\"fas fa-times skipCardButton\"></i></div>";
                 co++
             }
             document.getElementById("answerC").innerHTML = s;
-
-
-            $(".aCard").on("click", function(e) {
-                e.preventDefault();
-                if (!$(this).hasClass("aCardHover")) {
-
-                    for (var c of $(".answerCards").children(".aCard")) {
-                        $(c).removeClass("aCardHover");
-                    }
-                    $(this).addClass("aCardHover");
-                    selectedCID = $(this).attr("data-cid");
-                    $("#confirmCard").css("background-color", "#bdffbd");
-                    $("#confirmText").text("Confirm");
-                }
-                else {
-                    $(this).removeClass("aCardHover");
-                    $("#confirmCard").css("background-color", "white");
-                    $("#confirmText").text("Select Card");
-                    selectedCID = -1;
-                }
-            });
+            if (isCardCzar) setSelectableCzarCards();
+            else setSelectableCards();
+            setSkippableCards();
 
             cb&&cb();
         }
         document.getElementById("answerC").addEventListener('animationend', handleAnimationEnd);
         $('#answerC').addClass('fadeIn');
         $("#cardDisplayText").addClass('fadeOut');
+        $('#skipDisplayText').addClass('fadeOut');
     });
 
+}
+
+function setSelectableCards() {
+  $(".aCard").unbind().on("click", function(e) {
+      e.preventDefault();
+      if (!$(this).hasClass("aCardHover")) {
+
+          $('.aCard').each((i,c)=>{
+            c.classList.remove("aCardHover");
+          });
+
+          $(this).addClass("aCardHover");
+          selectedCID = $(this).attr("data-cid");
+          $("#confirmCard").css("background-color", "#bdffbd");
+          $("#confirmText").text("Confirm");
+      }
+      else {
+          $(this).removeClass("aCardHover");
+          $("#confirmCard").css("background-color", "white");
+          $("#confirmText").text("Select Card");
+          selectedCID = -1;
+      }
+  });
 }
 
 function hidePlayerCards(cb) {
@@ -289,6 +319,56 @@ function hidePlayerCards(cb) {
         cb&&cb();
     }
     document.getElementById("answerC").addEventListener('animationend', handleAnimationEnd)
+}
+
+var numSkips = 5;
+function setSkippableCards() {
+  $('.aCard').each((i, c) => {
+    c.parentElement.classList.remove("animated");
+  });
+
+  $('.skipCardButton').unbind().on('click tap', function(e) {
+    if (numSkips == 0) return;
+    numSkips--;
+    console.log($(this).parent().find('.aCard').data("cid"));
+    if ($(this).parent().find('.aCard').attr('data-cid') ==selectedCID) {
+      $("#confirmCard").css("background-color", "white");
+      $("#confirmText").text("Select Card");
+      selectedCID = -1;
+    }
+    $(this).parent().fadeOut(400, function() {
+      addPlayerCard();
+    });
+    $('#skipDisplayText').fadeOut(400, function() {
+      $('#skipDisplayText').text("Skips: " + numSkips).fadeIn(400);
+    });
+  });
+}
+
+function setSelectableCzarCards() {
+  $(".wCard").unbind().on("click", function(e) {
+      e.preventDefault();
+      $('#czarConfirmCard').removeClass('fadeOut fadeIn');
+      $("#czarConfirmText").text("Select Winner");
+      if ($(this).attr("data-cid") != -1) {
+          if (!$(this).hasClass("aCardHover")) {
+              for (var c of $(".cardPile").children(".wCard")) {
+                  $(c).removeClass("aCardHover");
+              }
+              $(this).addClass("aCardHover");
+              cardczarCID = $(this).attr("data-cid");
+              cardczarID = $(this).attr('data-id');
+              $("#czarConfirmCard").css("background-color", "#bdffbd");
+              $("#czarConfirmText").text("Confirm");
+          } else {
+              $(this).removeClass("aCardHover");
+              $("#czarConfirmCard").css("background-color", "white");
+              $("#czarConfirmText").text("Select Winner");
+              cardczarCID = -1;
+              cardczarID = 0;
+          }
+      }
+  });
 }
 
 function displayWaitingCards(cb) {
@@ -320,6 +400,8 @@ function displayWaitingCards(cb) {
             $("#cardDisplayText").text("Card Pile");
             $("#cardDisplayText").removeClass('fadeOut');
             $("#cardDisplayText").addClass('fadeIn');
+            $("#skipDisplayText").removeClass('fadeIn fadeOut');
+            $("#skipDisplayText").addClass('fadeOut');
 
 
             $("#cardczarDisplay").css('display', 'block');
@@ -338,29 +420,7 @@ function displayWaitingCards(cb) {
                     socket.emit('can card czar choose', roomID, function(res) {
                         if (res) {
                             $("#czarConfirmText").text("Select Winner");
-                            $(".wCard").unbind().on("click", function(e) {
-                                e.preventDefault();
-                                $('#czarConfirmCard').removeClass('fadeOut fadeIn');
-                                $("#czarConfirmText").text("Select Winner");
-                                if ($(this).attr("data-cid") != -1) {
-                                    if (!$(this).hasClass("aCardHover")) {
-                                        for (var c of $(".cardPile").children(".wCard")) {
-                                            $(c).removeClass("aCardHover");
-                                        }
-                                        $(this).addClass("aCardHover");
-                                        cardczarCID = $(this).attr("data-cid");
-                                        cardczarID = $(this).attr('data-id');
-                                        $("#czarConfirmCard").css("background-color", "#bdffbd");
-                                        $("#czarConfirmText").text("Confirm");
-                                    } else {
-                                        $(this).removeClass("aCardHover");
-                                        $("#czarConfirmCard").css("background-color", "white");
-                                        $("#czarConfirmText").text("Select Winner");
-                                        cardczarCID = -1;
-                                        cardczarID = 0;
-                                    }
-                                }
-                            });
+                            setSelectableCzarCards();
                         }
                     });
                 }
@@ -371,6 +431,8 @@ function displayWaitingCards(cb) {
             if (isCardCzar) {
                 document.body.style.backgroundColor = "black";
                 document.body.style.color = "white";
+                $('#skipDisplayText').removeClass('fadeOut fadeIn');
+                $('#skipDisplayText').addClass('fadeOut');
                 $("#cardDisplayText").text("Choose the BEST card");
                 $('#czarConfirmCard').css('display', 'block');
                 $('#czarConfirmCard').removeClass('fadeOut fadeIn');
@@ -475,12 +537,15 @@ function displayWinner() {
     socket.emit('set game state', roomID, WINNER_DISPLAY);
     updateScoreboard();
     socket.emit('get winner', roomID, function(w) {
+        if (w.id==nameID) numSkips += 5;
+
         gameState = WINNER_DISPLAY;
         socket.removeAllListeners('card added');
         socket.removeAllListeners('winner chosen');
         socket.removeAllListeners('card czar ready');
 
         $("#cardDisplayText").addClass('fadeOut');
+        $('#skipDisplayText').addClass('fadeOut');
         if (isCardCzar) {
             $('#czarConfirmCard').removeClass('fadeOut fadeIn');
             $('#czarConfirmCard').addClass('fadeOut');
@@ -499,7 +564,7 @@ function displayWinner() {
             s += "<div class=\"wCard\" data-cid='"+w.cid+"' " +
                 "style='background-color:#d1f2d1; "+((isCardCzar)?'color:black;':'')+"'>" +
                 "<span class=\"wCard-name\""+((w.id==nameID)?"style='background-color:#ffbf8e;'":"")+">"
-                +w.name+((w.id==nameID)?" (You)":"")+"</span><br><br>" +
+                +w.name+((w.id==nameID)?" (You)":"")+"<span style='float:right; font-size:0.7em;'>+5 skips</span></span><br><br>" +
                 "<span>"+getCardById(w.cid)+"</span></div>";
 
             socket.emit('get card czar', roomID, function(cc) {
@@ -586,6 +651,7 @@ function resetScreen(cb) {
         $('#questionCard').css('display', 'none');
         $('#cardczarDisplay').css('display', 'none');
         $('#cardDisplayText').css('display', 'none');
+        $('#skipDisplayText').css('display','none');
         document.getElementById("answerC").innerHTML = "";
         document.getElementById("cardP").innerHTML = "";
 
