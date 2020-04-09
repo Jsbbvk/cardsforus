@@ -324,14 +324,16 @@ function hidePlayerCards(cb) {
 
 var numSkips = 5;
 function setSkippableCards() {
-  $('.aCard').each((i, c) => {
-    c.parentElement.classList.remove("animated");
-  });
+
 
   $('.skipCardButton').unbind().on('click tap', function(e) {
+      $('.aCard').each((i, c) => {
+          c.parentElement.classList.remove("animated");
+      });
+
     if (numSkips == 0) return;
     numSkips--;
-    console.log($(this).parent().find('.aCard').data("cid"));
+
     if ($(this).parent().find('.aCard').attr('data-cid') ==selectedCID) {
       $("#confirmCard").css("background-color", "white");
       $("#confirmText").text("Select Card");
